@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>click.me</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive;
+      background: linear-gradient(135deg, #ffd6e8, #e0c3fc);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      width: 320px;
+      position: relative;
+    }
+
+    h1 {
+      color: #ff5c8a;
+    }
+
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    #yes {
+      background: #ff5c8a;
+      color: white;
+    }
+
+    #no {
+      background: #ddd;
+      position: absolute;
+    }
+
+    #message {
+      margin-top: 20px;
+      color: #555;
+      min-height: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Mel 💖</h1>
+    <p>Will you be my best friend?</p>
+
+    <button id="yes" onclick="yesClicked()">YES 🥰</button>
+    <button id="no" onmouseover="moveNo()">NO 🙄</button>
+
+    <div id="message"></div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("no");
+    const message = document.getElementById("message");
+
+    const messages = [
+      "Are you suuure? 🥺",
+      "Think again, Mel 😌",
+      "This button has anxiety 😭",
+      "You can’t escape destiny 💫",
+      "Best friends are non-negotiable 🤝"
+    ];
+
+    function moveNo() {
+      const card = document.querySelector(".card");
+      const maxX = card.clientWidth - noBtn.offsetWidth;
+      const maxY = card.clientHeight - noBtn.offsetHeight;
+
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+
+      message.textContent =
+        messages[Math.floor(Math.random() * messages.length)];
+    }
+
+    function yesClicked() {
+      document.querySelector(".card").innerHTML = `
+        <h1>YAYYYY 🥹💖</h1>
+        <p>You’re officially my best friend now, Mel!</p>
+        <p>No take backs. Ever. 😤💕</p>
+      `;
+    }
+  </script>
+
+</body>
+</html>
