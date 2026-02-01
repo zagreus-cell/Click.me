@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Click.here💙</title>
+<style>
+body {
+background: linear-gradient(135deg, #ffe6f0, #e6f7ff);
+font-family: "Comic Sans MS", "Poppins", sans-serif;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+margin: 0;
+}
+.card {
+background: white;
+padding: 30px;
+border-radius: 25px;
+width: 320px;
+text-align: center;
+box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+position: relative;
+}
+input {
+width: 90%;
+padding: 10px;
+border-radius: 12px;
+border: 1px solid #ddd;
+margin-bottom: 15px;
+}
+.buttons {position: relative;
+height: 90px;
+}
+button {
+padding: 10px 22px;
+border-radius: 20px;
+border: none;
+font-size: 16px;
+cursor: pointer;
+position: absolute;
+}
+#yes {
+background: #7ed957;
+color: white;
+left: 40px;
+}
+#no {
+background: #ff8fab;
+color: white;
+right: 40px;
+}
+#message {
+margin-top: 10px;
+font-size: 14px;
+color: #ff4f7b;
+min-height: 20px;
+}
+</style>
+</head>
+<body><div class="card" id="card">
+<h2 id="question">💗 Will you be my best friend?</h2>
+<p id="message">Be honest 🥺</p>
+<input type="text" id="name" placeholder="Shanin">
+<div class="buttons">
+<button id="yes" onclick="accept()">YES 💛</button>
+<button id="no">NO 🙃</button>
+</div>
+</div>
+<script>
+const noBtn = document.getElementById("no");
+const card = document.getElementById("card");
+const message = document.getElementById("message");
+const texts = [
+"Are you sure mel? 🥺",
+"Think again please mel💭",
+"I make a great best friend 😔",
+"This hurts my feelings a little 💔",
+"Okay now you’re just teasing 😭",
+"NO is not an option actually 😌"
+];
+let count = 0;
+function moveNo() {
+const maxX = card.clientWidth - noBtn.clientWidth - 20;
+const maxY = card.clientHeight - noBtn.clientHeight - 20;
+const x = Math.random() * maxX;
+const y = Math.random() * maxY;noBtn.style.left = x + "px";
+noBtn.style.top = y + "px";
+message.innerText = texts[count % texts.length];
+count++;
+}
+noBtn.addEventListener("mouseover", moveNo);
+noBtn.addEventListener("touchstart", moveNo);
+function accept() {
+const name = document.getElementById("melita").value || "Bestie";
+card.innerHTML = `
+<h2>🥹💛 YAYYY</h2>
+<p>${Melita}, you’re oﬃcially my best friend now 🫂</p>
+<p>Lifetime subscription activated 🤝✨</p>
+`;
+}
+</script>
+</body>
+</html>
